@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="meteoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="capteur">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_capteur" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="datameteo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="temperature" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="humudite" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="id_capteur" Type="int" />
+  </EntityType>
+  <Association Name="FK_datameteo_capteur">
+    <End Role="capteur" Type="Self.capteur" Multiplicity="0..1" />
+    <End Role="datameteo" Type="Self.datameteo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="capteur">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="datameteo">
+        <PropertyRef Name="id_capteur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="meteoModelStoreContainer">
+    <EntitySet Name="capteur" EntityType="Self.capteur" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="datameteo" EntityType="Self.datameteo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_datameteo_capteur" Association="Self.FK_datameteo_capteur">
+      <End Role="capteur" EntitySet="capteur" />
+      <End Role="datameteo" EntitySet="datameteo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

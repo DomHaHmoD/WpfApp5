@@ -19,6 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Configuration;
+using core.service;
 
 
 namespace WpfApp5
@@ -33,9 +34,7 @@ namespace WpfApp5
         private int temp;
         private int humidity;
         private object chart1;
-
-        //private object dataGridView1;
-        //private object textBox1;
+        
 
         public MainWindow()
         {
@@ -45,12 +44,14 @@ namespace WpfApp5
 
 
         //private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        /*private void DataGridView1_SelectedCellsChanged(object sender, DataGridRowEventArgs e)
+        /*private void dataGridView1_SelectedCellsChanged(object sender, DataGridRowEventArgs e)
         {
-            int idsuppr = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["id"].Value.ToString());
+            int idsuppr = int.Parse(dataGridView1.SelectedItem[e.RowIndex].Cells[id].Value.ToString());
             textBox1.Text = idsuppr.ToString();
-        }*/
 
+         
+
+        }*/
 
         /**
         * use to display the file in table form
@@ -92,24 +93,20 @@ namespace WpfApp5
          **/
         private void button2_Click(object sender, EventArgs e)
         {
+            //SqlConnection conn = new SqlConnection((@"Server=DOM\SQLEXPRESS;Database=meteodata;User=domi;Password=domi;Trusted_Connection=Yes;"));
+            //conn.Open();
+            //TODO format de la chaine incorrect = > à traiter
+            //string Query = "DELETE FROM meteodata WHERE id=" + int.Parse(dataGridView1.ToString()) + ";";
+            
             try
             {
-                //string pathDb = "server=localhost; user=root; database=meteodata; port=3306; password=Regul3040";
-                SqlConnection conn = new SqlConnection((@"Server=DOM\SQLEXPRESS;Database=meteodata;User=domi;Password=domi;Trusted_Connection=Yes;"));
-                //SqlConnection conn = new SqlConnection(pathDb);
-                conn.Open();
-                //string Query = "DELETE FROM `meteodata` WHERE `id`='" + int.Parse(textBox1.Text) + "';";
-                string Query = "DELETE FROM `meteodata` WHERE `id`='" + int.Parse(dataGridView1.ToString()) + "';";
-
-                SqlCommand MyCommand2 = new SqlCommand(Query, conn);
-
-                SqlDataReader MyReader2;
-                MyReader2 = MyCommand2.ExecuteReader();
-                MessageBox.Show("données détruites");
-                while (MyReader2.Read())
-                {
-                }
-                conn.Close();
+                this.dataGridView1.Items.Remove(this.dataGridView1.SelectedItem);
+                /*this.dataGridView1.Rows[e.RowIndex].Selected = true;
+                this.rowIndex = e.RowIndex;
+                this.dataGridView1.CurrentCell = this.dataGridView1.Rows[e.RowIndex].Cells[1];
+                this.contextMenuStrip1.Show(this.dataGridView1, e.Location);
+                contextMenuStrip1.Show(Cursor.Position);*/
+                MessageBox.Show("line éliminée");
             }
             catch (Exception ex)
             {
@@ -308,45 +305,12 @@ namespace WpfApp5
          * use to export csv file
          * 
          **/
+
         private void exportCsvToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //string pathDb = "server=localhost; user=root; database=meteodata; port=3306; password=Regul3040";
-            SqlConnection conn = new SqlConnection((@"Server=DOM\SQLEXPRESS;Database=meteodata;User=domi;Password=domi;Trusted_Connection=Yes;"));
-
-            //SqlConnection conn = new SqlConnection(pathDb);
-            Console.WriteLine("Connecting to MySQL...");
-            conn.Open();
-            Console.WriteLine("Connected");
-
-
-            SqlCommand cmd = new SqlCommand("SELECT * from `meteodata`", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            StringBuilder csvcontent = new StringBuilder();
-            csvcontent.AppendLine("id, date, temperature, taux d'humidite");
-
-            while (reader.Read())
-            {
-                csvcontent.AppendLine(reader.GetString(id) + "," +
-                    reader.GetString(date) + "," +
-                    reader.GetString(temp).Replace(",", ".") + "," +
-                    reader.GetString(humidity) + "%");
-
-            }
-            Console.ReadLine();
-            try
-            {
-                //string pathCsv = @"C:\Users\Dominique H\Downloads\src2\sourcedonnees.csv";
-                string pathCsv = @"C:\Users\Dominique H\Downloads\src2\sourcedonnees.csv";
-                File.AppendAllText(pathCsv, csvcontent.ToString());
-
-                Console.WriteLine("fichier csv créé");
-                MessageBox.Show("votre fichier .csv a bien été céer");
-            }
-            catch
-            {
-                MessageBox.Show("attention le fichier n'a pu être créer");
-            }
+            ExportCsv test = new ExportCsv();
+            test.Export();
+            MessageBox.Show("votre fichier .csv a bien été céer");
         }
 
         /**

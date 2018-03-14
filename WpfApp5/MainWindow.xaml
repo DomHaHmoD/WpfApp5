@@ -1,24 +1,47 @@
 ﻿<Window x:Class="WpfApp5.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesignConverters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"     
+        xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf"
+        xmlns:converters="clr-namespace:MaterialDesignThemes.Wpf.Converters"
         xmlns:local="clr-namespace:WpfApp5"
 	Title="Traitement des fichiers">
+    <!--x:Class="WpfApp5.MainWindow"-->
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid Height="397" Width="1336">
-        <Button Name="button4" Height="33" Width="103" TabIndex="8" Click="button4_Click" Margin="360,16,873,348" HorizontalAlignment="Right" VerticalAlignment="Bottom" >Envoi Email</Button>
+        
+        
+        <!--<Button Name="button4" Height="33" Width="103" TabIndex="8" Click="button4_Click" Margin="360,16,873,348" HorizontalAlignment="Right" VerticalAlignment="Bottom" >Envoi Email</Button>-->
+        <Button Name="button4" Style="{StaticResource MaterialDesignRaisedAccentButton}"
+            Height="33" Width="103" TabIndex="8" Click="button4_Click" Margin="360,16,873,348" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+            ToolTip="pour envoyer le fichier du capteur, cliquez sur ce bouton">
+            Envoi email
+        </Button>
+
         <Button Name="button3" Height="23" Width="95" TabIndex="7" Margin="660,17,581,357" Click="button3_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" >Load Chart</Button>
         <!--<Button Name="button3" Height="23" Width="95" TabIndex="7" Click="button3_Click" Margin="660,17,581,357" HorizontalAlignment="Right" VerticalAlignment="Bottom" >Load Chart</Button>-->
         <Button Name="button2" Height="32" Width="98" TabIndex="5" Click="button2_Click" Margin="247,17,991,348" HorizontalAlignment="Right" VerticalAlignment="Bottom" >supprimer</Button>
         <TextBox Name="textBox1" Height="22" Width="100" TabIndex="4" TextChanged="textBox1_TextChanged" Margin="125,17,1111,358" HorizontalAlignment="Right" VerticalAlignment="Bottom" TextWrapping="Wrap" ></TextBox>
         <Button Name="button1" Height="23" Width="94" TabIndex="3" Click="button1_Click" Margin="2,16,1240,358" HorizontalAlignment="Right" VerticalAlignment="Bottom" >Load Tab</Button>
         <!--<DataGrid Name="dataGridView1" Height="315" Width="631" Margin="2,55,703,27" HorizontalAlignment="Right" VerticalAlignment="Bottom" SelectedCellsChanged="DataGridView1_SelectedCellsChanged">-->
-        <DataGrid Name="dataGridView1" Height="315" Width="631" Margin="2,55,703,27" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
+        <DataGrid Name="dataGridView1" Height="315" Width="631" Margin="2,55,703,27" HorizontalAlignment="Right" VerticalAlignment="Bottom" SelectedItem="dataGridView1_SelectedCellsChanged">
             <DataGrid.Columns></DataGrid.Columns>
         </DataGrid>
         <Menu Name="menuStrip1" Height="28" Width="1336" TabIndex="0" Margin="-10,-15,10,384" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
             <MenuItem Header="Data" Name="dataToolStripMenuItem" >
                 <MenuItem Header="Import txt" Name="importTxtToolStripMenuItem" Click="importTxtToolStripMenuItem_Click"></MenuItem>
-                <MenuItem Header="Export csv" Name="exportCsvToolStripMenuItem" ></MenuItem>
+                <MenuItem Header="Export csv" Name="exportCsvToolStripMenuItem" Click="exportCsvToolStripMenuItem_Click"></MenuItem>
                 <MenuItem Header="Export pdf" Name="exportPdfToolStripMenuItem" ></MenuItem>
                 <MenuItem Header="Envoi email" Name="envoiEmailToolStripMenuItem" ></MenuItem>
             </MenuItem>

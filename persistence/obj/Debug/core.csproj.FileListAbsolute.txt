@@ -1,0 +1,17 @@
+C:\Users\Dominique H\source\repos\WpfApp5\persistence\obj\Debug\core.csprojResolveAssemblyReference.cache
+C:\Users\Dominique H\source\repos\WpfApp5\persistence\obj\Debug\core.csproj.CoreCompileInputs.cache
+C:\Users\Dominique H\source\repos\WpfApp5\persistence\bin\Debug\persistence.dll.config
+C:\Users\Dominique H\source\repos\WpfApp5\persistence\bin\Debug\persistence.dll
+C:\Users\Dominique H\source\repos\WpfApp5\persistence\bin\Debug\persistence.pdb
+C:\Users\Dominique H\source\repos\WpfApp5\persistence\bin\Debug\EntityFramework.dll
+C:\Users\Dominique H\source\repos\WpfApp5\persistence\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Dominique H\source\repos\WpfApp5\persistence\bin\Debug\EntityFramework.xml
+C:\Users\Dominique H\source\repos\WpfApp5\persistence\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Dominique H\source\repos\WpfApp5\persistence\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\Dominique H\source\repos\WpfApp5\persistence\obj\Debug\persistence.dll
+C:\Users\Dominique H\source\repos\WpfApp5\persistence\obj\Debug\persistence.pdb
+C:\Users\Dominique H\source\repos\WpfApp5\persistence\bin\Debug\fr\EntityFramework.SqlServer.resources.dll
+C:\Users\Dominique H\source\repos\WpfApp5\persistence\bin\Debug\MaterialDesignColors.dll
+C:\Users\Dominique H\source\repos\WpfApp5\persistence\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\Dominique H\source\repos\WpfApp5\persistence\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\Dominique H\source\repos\WpfApp5\persistence\bin\Debug\MaterialDesignThemes.Wpf.xml

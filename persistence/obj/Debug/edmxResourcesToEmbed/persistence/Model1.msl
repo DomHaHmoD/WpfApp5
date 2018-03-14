@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="meteoModelStoreContainer" CdmEntityContainer="meteoEntities">
+    <EntitySetMapping Name="capteur">
+      <EntityTypeMapping TypeName="meteoModel.capteur">
+        <MappingFragment StoreEntitySet="capteur">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom_capteur" ColumnName="nom_capteur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="datameteo">
+      <EntityTypeMapping TypeName="meteoModel.datameteo">
+        <MappingFragment StoreEntitySet="datameteo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="temperature" ColumnName="temperature" />
+          <ScalarProperty Name="humudite" ColumnName="humudite" />
+          <ScalarProperty Name="id_capteur" ColumnName="id_capteur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
